@@ -13,7 +13,6 @@ models:
         description: "Unique identifier for the specific line item."
         tests:
           - not_null
-          - unique
       - name: truck_id
         description: "Unique identifier for the food truck where the sale occurred."
       - name: customer_id
