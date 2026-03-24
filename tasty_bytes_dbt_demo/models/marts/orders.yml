@@ -1,0 +1,81 @@
+version: 2
+
+models:
+  - name: orders
+    description: "A grain-level table combining order headers, details, and dimensions for food truck sales. Each row represents a single line item within an order."
+    columns:
+      # IDs & Keys
+      - name: order_id
+        description: "Unique identifier for the order header."
+        tests:
+          - not_null
+      - name: order_detail_id
+        description: "Unique identifier for the specific line item."
+        tests:
+          - not_null
+          - unique
+      - name: truck_id
+        description: "Unique identifier for the food truck where the sale occurred."
+      - name: customer_id
+        description: "Unique identifier for the customer who placed the order."
+
+      # Order Timing
+      - name: order_ts
+        description: "The UTC timestamp when the order was finalized."
+
+      # Truck & Menu Info
+      - name: truck_brand_name
+        description: "The brand name of the food truck (e.g., 'Taco Town', 'Burger Bus')."
+      - name: menu_type
+        description: "The category of the menu, such as 'Main', 'Seasonal', or 'Late Night'."
+      - name: menu_item_id
+        description: "Foreign key to the specific item sold."
+      - name: menu_item_name
+        description: "The name of the dish or beverage (e.g., 'Spicy Carnitas Taco')."
+
+      # Geography & Franchise Info
+      - name: primary_city
+        description: "The city where the truck was operating at the time of sale."
+      - name: region
+        description: "The state, province, or territory."
+      - name: country
+        description: "The country of operation."
+      - name: franchise_flag
+        description: "Boolean flag (Y/N) indicating if the truck is a franchise vs. corporate-owned."
+      - name: franchise_id
+        description: "Unique identifier for the franchise owner."
+      - name: franchisee_first_name
+        description: "First name of the franchise owner."
+      - name: franchisee_last_name
+        description: "Last name of the franchise owner."
+      - name: location_id
+        description: "The specific parking spot or venue ID where the truck was located."
+
+      # Customer Demographics
+      - name: first_name
+        description: "Customer's first name."
+      - name: last_name
+        description: "Customer's last name."
+      - name: e_mail
+        description: "Customer's primary email address."
+      - name: phone_number
+        description: "Customer's contact phone number."
+      - name: children_count
+        description: "Self-reported number of children in the customer's household."
+      - name: gender
+        description: "Customer gender for marketing segmentation."
+      - name: marital_status
+        description: "Customer marital status."
+
+      # Financials & Line Item Details
+      - name: line_number
+        description: "The sequential order of the item within the specific order."
+      - name: quantity
+        description: "The number of units of this specific item purchased."
+      - name: unit_price
+        description: "The list price for a single unit of this item."
+      - name: price
+        description: "The gross amount for this line item (quantity * unit_price)."
+      - name: order_amount
+        description: "The subtotal for the entire order before taxes and discounts."
+      - name:
