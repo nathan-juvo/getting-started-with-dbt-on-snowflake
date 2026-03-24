@@ -22,4 +22,7 @@ models:
     staging:
       +materialized: view
     marts:
+      +persist_docs:
+        relation: true
+        columns: true
       +materialized: table
