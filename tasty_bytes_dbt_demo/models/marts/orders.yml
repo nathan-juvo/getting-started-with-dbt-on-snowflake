@@ -78,4 +78,9 @@ models:
         description: "The gross amount for this line item (quantity * unit_price)."
       - name: order_amount
         description: "The subtotal for the entire order before taxes and discounts."
-      - name:
+      - name: order_tax_amount
+        description: "The total tax calculated for the entire order."
+      - name: order_discount_amount
+        description: "The total discount applied to the entire order."
+      - name: order_total
+        description: "The final total paid by the customer (subtotal + tax - discount)."
